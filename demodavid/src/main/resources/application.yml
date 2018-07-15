@@ -4,23 +4,23 @@ server:
 
 spring.datasource:
   driverClassName: org.h2.Driver
-  url           : jdbc:h2:mem:bootexample;
+  url: jdbc:h2:mem:bootexample;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
 
 security:
-  basic         :
-  enabled       : false
+  basic:
+    enabled: false
 
 management:
-  port          : 8091
-  security      : #actuator sin autenticacion#
-  enabled       : false
+  port: 8091 #Puerto donde correra el actuator#
+  security: #actuator sin autenticacion#
+    enabled: false
 
 #actuator#
 #default project info followed by actual injected pom-specified values.
 project:
-  name          : spring-boot-demo-iscodem
+  name          : spring-boot-demo-david
   version       : 0.1
-  description   : spring-boot-demo-iscodem
+  description   : spring-boot-demo-david
 info:
   build:
     artifact    : ${project.artifactId}
@@ -31,7 +31,7 @@ info:
 user.service:
   name: 'default profile:'
 
-#---#
+---
 #Para configurar con perfil test de pruebas#
 spring:
   profiles: test
@@ -43,10 +43,9 @@ user.service:
   name: 'test profile:'
 
 
-#---#
+---
 spring:
   profiles: mysql
-
   datasource:
     driverClassName: com.mysql.jdbc.Driver
     #url: jdbc:mysql://localhost/rsmortgage#

@@ -1,9 +1,6 @@
 package com.iscodem.demodavid.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -17,9 +14,13 @@ public class Persona {
     @Id
     @GeneratedValue()
     private int id;
+    @Column(nullable = false)
     private String nombres;
+    @Column(nullable = false)
     private String apellidos;
+    @Column(nullable = false)
     private Date fecNac;
+    @Column(nullable = false)
     private int edad;
     private String dni;
 
@@ -83,4 +84,3 @@ public class Persona {
         this.dni = dni;
     }
 }
-
