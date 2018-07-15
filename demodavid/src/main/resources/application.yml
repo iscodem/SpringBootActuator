@@ -1,0 +1,63 @@
+#Este archivo permite configurar profiles del proyecto#
+server:
+  port: 8090
+
+spring.datasource:
+  driverClassName: org.h2.Driver
+  url           : jdbc:h2:mem:bootexample;
+
+security:
+  basic         :
+  enabled       : false
+
+management:
+  port          : 8091
+  security      : #actuator sin autenticacion#
+  enabled       : false
+
+#actuator#
+#default project info followed by actual injected pom-specified values.
+project:
+  name          : spring-boot-demo-iscodem
+  version       : 0.1
+  description   : spring-boot-demo-iscodem
+info:
+  build:
+    artifact    : ${project.artifactId}
+    name        : ${project.name}
+    description : ${project.description}
+    version     : ${project.version}
+
+user.service:
+  name: 'default profile:'
+
+#---#
+#Para configurar con perfil test de pruebas#
+spring:
+  profiles: test
+
+spring.jpa:
+    hibernate.ddl-auto: create-drop
+
+user.service:
+  name: 'test profile:'
+
+
+#---#
+spring:
+  profiles: mysql
+
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    #url: jdbc:mysql://localhost/rsmortgage#
+    url: jdbc:mysql://localhost:3306/db_demodavid
+    username: root
+    password: mysql
+
+  jpa:
+    hibernate:
+      dialect: org.hibernate.dialect.MySQLInnoDBDialect
+      ddl-auto: update # todo: in non-dev environments, comment this out:
+
+user.service:
+  name: 'test profile:'
